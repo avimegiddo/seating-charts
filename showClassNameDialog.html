@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <style>
+    /* Add some styling to make the input field wider and taller */
+    #inputClassName {
+      width: 300px;  /* Increased width */
+      height: 30px;  /* Increased height */
+      font-size: 18px;  /* Increased font size */
+    }
+   
+    /* Increase the font size of the note */
+    .note {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <label for="inputClassName">Enter class name/label:</label>
+    <input type="text" id="inputClassName" />
+  </div>
+  <div>
+    <button onclick="submitClassName()">Submit</button>
+  </div>
+  <!-- Add a note below the input field -->
+  <div class="note">
+    <small>Please wait a few seconds after clicking 'Submit'.</small>
+  </div>
+  <script>
+    function submitClassName() {
+      var className = document.getElementById("inputClassName").value;
+     
+      // Proceed with applying the class label
+      google.script.run.withSuccessHandler(function(response) {
+        google.script.host.close();
+      }).withFailureHandler(function(error) {
+      }).addClassLabelToSlide(className);
+    }
+  </script>
+</body>
+
+</html>
+
+
+
+
+
