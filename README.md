@@ -4,13 +4,28 @@ Creating balanced student groups can be a time-consuming task. Whether you're ar
 Classroom Groups Manager in Google Slides
 This tool allows you to easily manage classroom groups in Google Slides. Perfect for teachers, this tool automates grouping students, organizing them on slides, and even swapping students between groups with minimal effort.
 
-Using the Tool
-Open your Google Slides presentation.
-Install the Classroom Groups Manager from the onOpen function.
-In the Google Slides toolbar, click on Classroom Groups Manager and use the provided options:
-Open Sidebar: Opens the sidebar to input student names, create groups, or assign students to desks.
-Swap Students: Select two shapes (representing students) and click to swap their names on the slide.
+How to Use the Classroom Groups Manager Template
+Open the Template Preview Link:
+
+Click on the provided template link. This will take you to the preview page of the Google Slides template.
+The link will look something like this: https://docs.google.com/presentation/d/XYZ/template/preview.
+Click "Use Template":
+
+Once you are on the preview page, you’ll see a blue button in the top-right corner labeled "Use Template".
+Click on this button to automatically create your own copy of the template.
+Start Using Your Copy:
+
+After clicking "Use Template," a new copy of the Google Slides presentation will automatically be created in your Google Drive.
+The template is now ready for you to use, and all the features of the Classroom Groups Manager are embedded within the presentation.
+There is no need to manually "Make a Copy" — this step is handled automatically by the "Use Template" button.
+Access the Classroom Groups Manager:
+
+In your new copy of the template, open the Classroom Groups Manager menu from the toolbar at the top of the screen.
+From there, you can access all the features (open the sidebar, group students, swap names, etc.).
+
+
 Group in Pairs/Threes/Fours/Fives: Automatically group students in your preferred group size.
+Swap Students: Select two shapes (representing students) and click to swap their names on the slide.
 Arrange in Circle: Neatly arranges students in a circular formation on the slide.
 Select Random Student: Randomly select a student from the current list.
 Sidebar Features
