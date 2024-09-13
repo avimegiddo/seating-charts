@@ -7,8 +7,9 @@ This tool allows you to easily manage classroom groups in Google Slides. Perfect
 How to Use the Classroom Groups Manager Template
 Open the Template Preview Link:
 
-Click on the provided template link. This will take you to the preview page of the Google Slides template.
-The link will look something like this: https://docs.google.com/presentation/d/XYZ/template/preview.
+Click on the Classroom Groups Manager Google Slides template preview:
+https://docs.google.com/presentation/d/1eTVhEn59M1xts-bgumE3hm1MR6na3WtIGRd6y_x0zHI/template/preview
+
 Click "Use Template":
 
 Once you are on the preview page, you’ll see a blue button in the top-right corner labeled "Use Template".
