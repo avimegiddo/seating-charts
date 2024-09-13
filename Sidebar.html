@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <style>
+    div {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <label for="studentList">Enter/paste students separated by comma, space, or both:</label><br>
+    <textarea id="studentList" rows="8" cols="30"></textarea>
+  </div>
+  <div>
+    <button onclick="createDesks()">Create Desks</button>
+  </div>
+  <hr>
+  <div>
+    <button onclick="clearTextArea()">Clear Text Area</button>
+  </div>
+  <hr>
+  <div>
+    <button onclick="google.script.run.resetWholeClass()">Reset/Retrieve Whole Class</button>
+  </div>
+  <div>
+    <button onclick="google.script.run.groupInPairs()">Group in Pairs</button>
+  </div>
+  <!-- NEW SWAP STUDENTS SECTION -->
+  <div>
+    <!-- Instructions for the user -->
+    <label>Select exactly 2 students to swap them</label><br>
+    <button onclick="google.script.run.swapStudents()">Swap Students</button>
+  </div>
+
+  <div>
+    <button onclick="google.script.run.groupInThrees()">Group in Threes</button>
+  </div>
+  <div>
+    <button onclick="google.script.run.groupInFours()">Group in Fours</button>
+  </div>
+  <div>
+    <button onclick="google.script.run.groupInFives()">Group in Fives</button>
+  </div>
+  <div>
+    Enter a bad pairing separated by comma, space, or both:
+    <input type="text" id="badPair" placeholder="e.g., Nathan, Rex" size="30">
+    <button onclick="saveBadPair()">Add to list</button>
+  </div>
+  <div>
+    <button onclick="openBadPairsDialog()">Edit Bad Pairings</button>
+  </div>
+
+  <div>
+    <label for="selectedStudents">Enter comma or space-separated list of selected students:</label><br>
+    <input type="text" id="selectedStudents" placeholder="e.g. Ashley, Catherine Derek, Liz" size="30">
+  </div>
+
+  <div>
+    <button onclick="createGroupsAroundSelectedStudents()">Create Groups Around Selected Students</button>
+  </div>
+
+  <div>
+    <button onclick="google.script.run.arrangeInCircle()">Arrange in Circle</button>
+  </div>
+  <div>
+    <button onclick="assignNamesToDesks()">Assign Names to Fixed Desks</button>
+  </div>
+  <div>
+    <button onclick="google.script.run.selectRandomStudent()">Select Random Student</button>
+  </div>
+  <div>
+    <button onclick="google.script.run.deselectStudent()">Deselect Student</button>
+  </div>
+  <div>
+    <input type="text" id="classNameInput" placeholder="Enter class name/number" />
+    <button onclick="addClassLabel()">Add Class Name/Number Label</button>
+  </div>
+
+  <hr>
+
+
+
+  <script>
+    function createDesks() {
+      var names = document.getElementById("studentList").value.trim().split(/[\s,]+/);
+      google.script.run.createNamedRectangles(names);
+    }
+
+    function showClassNameDialog() {
+      google.script.run.showClassNameDialog();
+    }
+
+    function clearTextArea() {
+      document.getElementById("studentList").value = '';  // Clear the textarea
+    }
+
+    function resetWholeClass() {
+      google.script.run.withSuccessHandler(populateTextArea).resetWholeClass();
+    }
+
+    function selectRandomStudent() {
+      google.script.run.selectRandomStudent();
+    }
+
+    function deselectStudent() {
+      google.script.run.deselectStudent();
+    }
+
+    function addClassLabel() {
+      var className = document.getElementById("classNameInput").value;
+      google.script.run.addClassLabelToSlide(className);
+    }
+   
+    // NEW FUNCTION FOR SWAP STUDENTS
+    function swapStudentsFromSidebar() {
+      google.script.run.withSuccessHandler(showNotification).swapStudents();
+    }
+
+    // Function to show a success message
+    function showNotification() {
+      var notification = document.getElementById('notification');
+      notification.innerHTML = 'Successfully swapped students!';
+     
+      // Clear the notification after 3 seconds
+      setTimeout(function () {
+        notification.innerHTML = '';
+      }, 3000);
+    }
+
+    function saveBadPair() {
+      var badPairValue = document.getElementById('badPair').value;
+      google.script.run.withSuccessHandler(clearInput).saveBadPair(badPairValue);
+    }
+
+    function openBadPairsDialog() {
+      google.script.run.editBadPairings();  // Calls the function in Code.gs
+    }
+
+    function createGroupsAroundSelectedStudents() {
+      var selectedStudents = document.getElementById("selectedStudents").value;
+
+      // Show an alert to ensure the button click is captured
+      google.script.run.withSuccessHandler(function () {
+        alert("Button clicked. Selected students: " + selectedStudents); // Debugging: Check if button click is working
+      }).groupAroundSelectedStudentsFromSidebar(selectedStudents);
+    }
+
+    function clearInput() {
+      document.getElementById('badPair').value = '';
+    }
+
+    function assignNamesToDesks() {
+      var studentNames = document.getElementById("studentList").value.trim().split(/[\s,]+/);
+      google.script.run.withSuccessHandler(function () {
+        // You can do something here after setStudentNames finishes, if needed.
+      }).setStudentNames(studentNames);
+      google.script.run.assignNamesToDesks();
+    }
+
+   
+
+   
+  </script>
+</body>
+
+</html>
+
+
+
+
