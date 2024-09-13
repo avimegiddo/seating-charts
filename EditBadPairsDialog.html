@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <h2>Edit Bad Pairings</h2>
+  <ul id="badPairsList"></ul>
+
+  <script>
+    try {
+      // Log that script is running
+      console.log("Starting bad pairs rendering process...");
+
+      // The bad pairs array is passed from the server
+      var badPairs = JSON.parse('<?= badPairs ?>');  // Explicitly parse the JSON string
+      console.log("Received bad pairs in HTML:", badPairs);
+
+      // Function to render the list of bad pairs
+      function renderBadPairs() {
+        var listHtml = ""; // Initialize an empty string to hold the list items
+        if (badPairs.length === 0) {
+          // If there are no bad pairs, display a message
+          listHtml = "<li>No bad pairs found.</li>";
+        } else {
+          badPairs.forEach(function(pair, index) {
+            // Add each pair as a list item with a remove button
+            listHtml += "<li>" + pair +
+              " <button onclick='removePair(" + index + ")'>Remove</button></li>";
+          });
+        }
+
+        // Insert the generated HTML into the badPairsList <ul>
+        document.getElementById('badPairsList').innerHTML = listHtml;
+        console.log("Bad pairs rendered:", listHtml);
+      }
+
+      // Function to remove a bad pair by index
+      function removePair(index) {
+        badPairs.splice(index, 1);  // Remove the pair at the given index
+        console.log("Bad pair removed, updated bad pairs:", badPairs);
+
+        // Save the updated list to the server
+        google.script.run.withSuccessHandler(function() {
+          alert('Bad pair removed successfully!');
+          renderBadPairs();  // Refresh the list after removal
+        }).saveBadPairs(badPairs);
+      }
+
+      // Render the bad pairs when the dialog is loaded
+      renderBadPairs();
+     
+    } catch (error) {
+      console.error("Error occurred while rendering bad pairs:", error);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
